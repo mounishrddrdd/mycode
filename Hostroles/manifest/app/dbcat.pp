@@ -1,6 +1,6 @@
 # This is for dbglobalvehicle chain
-class hostroles::db::mysql::inv::dbcat ( $lv_size = '199G', $tmpdir = '/db/tmp' ) {
-  include yum::ddc
+class hostroles::app::dbcat ( $lv_size = '199G', $tmpdir = '/db/tmp' ) {
+  include yum::
   notify { 'hostrole':
     message  => 'This system is using hostroles::db::mysql::inv::dbcat',
     withpath => false,
