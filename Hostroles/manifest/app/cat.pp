@@ -1,7 +1,7 @@
 ## This is GV hostrole file
 class hostroles::app::capsule::inv::cat {
   # only install sumo on live
-  case $::ddc_environment {
+  case $::[] {
     'qa':  {
       class { 'platforms::se::base':
         sumo_accessid  => '',
@@ -21,7 +21,7 @@ class hostroles::app::capsule::inv::cat {
       include platforms::se::base
     }
   }
-  case $::ddc_environment {
+  case $::[] {
     'live','qa','dev': {
       class {'platforms::newrelic::java_agent':
         app_name => 'global-vehicle-services',
@@ -32,7 +32,7 @@ class hostroles::app::capsule::inv::cat {
   class {'platforms::newrelic::server_monitor':
     newrelic_license_key => '',
   }
-  case $::ddc_environment {
+  case $::[] {
     'live','qa','dev': {
       include platforms::monit::catvehicle
       include platforms::monit::init
@@ -57,7 +57,7 @@ class hostroles::app::capsule::inv::cat {
   include platforms::spacewalk::activation  # only required on centos 6
 
   class { 'platforms::custom_hostsfile': type => 'cat' }
-  if ($::ddc_environment == 'qa') {
+  if ($::[] == 'qa') {
     host { 'helix-db1.earthcars.net': ip => '10.37.1.60' }
     host { 'helix-db2.earthcars.net': ip => '10.37.1.60' }
     host { 'gvincentive-db1.earthcars.net': ip => '10.37.1.60' }
