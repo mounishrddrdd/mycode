@@ -58,15 +58,5 @@ class hostroles::app::capsule::inv::cat {
 
   class { 'platforms::custom_hostsfile': type => 'cat' }
   if ($::[] == 'qa') {
-    host { 'helix-db1.earthcars.net': ip => '10.37.1.60' }
-    host { 'helix-db2.earthcars.net': ip => '10.37.1.60' }
-    host { 'gvincentive-db1.earthcars.net': ip => '10.37.1.60' }
-    host { 'incentives-db1.earthcars.net': ip => '10.37.1.203' }
-    host { 'incentives-db2.earthcars.net': ip => '10.37.1.203' }
-    host { 'edmunds-db1.earthcars.net': ip => '10.37.1.60' }
-    host { 'edmunds-loader-master.dealer.ddc': ip => '10.37.1.60' }
-    host { 'flux-db.earthcars.net': ip => '10.37.1.60' }
-    host { 'autodata-db2.earthcars.net': ip => '10.37.1.20' }
-  }
-
+    host { 'helix-db1.earthcars.net': ip => '' }
 }
